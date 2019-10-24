@@ -17,7 +17,13 @@ public class BookController {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Book saveParkingLot(@RequestBody Book bookingInfo) throws NotSupportedException {
-        return bookingService.saveParkingLot(bookingInfo);
+    public Book saveBooking(@RequestBody Book bookingInfo) throws NotSupportedException {
+        return bookingService.saveBooking(bookingInfo);
+    }
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public Iterable<Book> getAllBookings(@RequestParam(required = false, defaultValue = "0") Integer page,
+                                            @RequestParam(required = false, defaultValue = "15") Integer pageSize) {
+        return bookingService.getAllBookings(page, pageSize);
     }
 }

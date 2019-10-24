@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long packageNumber;
     @Column(nullable = false)
     private String pickUptime;
